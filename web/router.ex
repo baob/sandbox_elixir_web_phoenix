@@ -16,7 +16,14 @@ defmodule HelloWorld.Router do
   scope "/", HelloWorld do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/hello", HelloWorldController, :hello
+    get "/hello/:name", HelloWorldController, :hello
+
+    get "/*path", HelloWorldController, :goodbye
+    post "/*path", HelloWorldController, :goodbye
+    put "/*path", HelloWorldController, :goodbye
+    patch "/*path", HelloWorldController, :goodbye
+    delete "/*path", HelloWorldController, :goodbye
   end
 
   # Other scopes may use custom stacks.
